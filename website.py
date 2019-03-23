@@ -216,7 +216,7 @@ def twiiterdashboard():
     url_support = round((total_urls / total_tweets)* 100)
 
     polarity_chart()
-    urlsupport_chart()
+    #urlsupport_chart()
     for value in date_time:
         date_time_obj = datetime.strptime(str(value), '%Y-%m-%d %H:%M:%S')
 
