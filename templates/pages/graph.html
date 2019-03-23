@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/assets1/css/bootstrap.min.css">
+    <!--    Fonts  -->
+
+    <link rel="stylesheet" href="static/assets1/css/font-awesome.min.css">
+
+    <style>
+        body{
+            overflow-x:hidden;
+            padding-top: 10px;
+            margin: 0;
+        }
+        .bg-success{
+            background-color: #e2efd9 !important;
+        }
+        .border-success{
+            border: 1px solid #385623 !important;
+        }
+        .text-center{
+            color: #385623 !important;
+        }
+    </style>
+</head>
+<body>
+<!-- Sentiment -->
+<div class="row py-2">
+    <div class="w-100">
+        <div class="bg-success border border-success">
+            <h3 class="text-white text-center">twitter sentiment analysis dashboard</h3>
+        </div>
+    </div>
+</div>
+<!-- Account Info -->
+<div class="bg-success border border-success">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="offset-4 col-md-4 border border-success text-center"> <strong>{{ d.tweets }}</strong> </div>
+                <div class="col-md-4 border border-success text-center"> <strong>{{ d.account }}</strong> </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-2 border border-success text-center"> <strong>1.6</strong> </div>
+                <div class="col-md-2 border border-success text-center"> <strong>{{ d.bot_account }}</strong> </div>
+                <div class="col-md-2 border border-success text-center"> <strong>{{ d.true_account }}% </strong> </div>
+                <div class="col-md-2 border border-success text-center"> <strong>{{ d.tweets_url}} </strong> </div>
+                <div class="col-md-2 border border-success text-center"> <strong>{{d.url_support }}%</strong> </div>
+                <div class="col-md-2"></div> <!-- this column empty -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-success border border-success">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="offset-4 col-md-4 border border-success text-center"> <small>Tweets</small> </div>
+                <div class="col-md-4 border border-success text-center"> <small>Accounts</small> </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-2 border border-success text-center"> <small>Tweet per account</small></div>
+                <div class="col-md-2 border border-success text-center"> <small>bot account</small> </div>
+                <div class="col-md-2 border border-success text-center"> <small>% off on account</small> </div>
+                <div class="col-md-2 border border-success text-center"> <small> tweet per url</small> </div>
+                <div class="col-md-2 border border-success text-center"> <small>% URL support</small> </div>
+                <div class="col-md-2 border border-success text-center"></div> <!-- this column empty -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tweet polarity -->
+<div class="row py-2">
+    <div class="col-md-4 border border-success">
+        <div class="text-center">
+            <p class="text-primary border border-success">tweet polarity</p>
+            <img src="static/assets1/img/new_plot.png" alt="" class="w-50">
+        </div>
+    </div>
+    <div class="col-md-4 border border-success">
+        <div class="text-center">
+            <p class="text-primary border border-success">URL Spport</p>
+            <img src="static/assets1/img/url_sup.png" alt="" class="w-50">
+        </div>
+    </div>
+    <div class="col-md-4 border border-success">
+        <div class="text-center">
+            <p class="text-primary border border-success">Tweet overtime</p>
+            <img src="static/assets1/img/graph3.jpg" alt="" class="w-100">
+        </div>
+    </div>
+</div>
+<!--  polarity & Support -->
+<div class="row py-2">
+    <div class="col-md-6 border border-success">
+        <div class="text-center">URL Spport</div>
+        <img src="static/assets1/img/graph3.jpg" alt="" class="w-100">
+    </div>
+    <div class="col-md-6 border border-success">
+        <div class="text-center">Tweet overtime</div>
+        <img src="static/assets1/img/graph4.jpg" alt="" class="w-100">
+    </div>
+</div>
+<!-- World Cloud -->
+<div class="border border-success">
+    <p class="text-center">World Cloud</p>
+</div>
+<div class="border border-success">
+    <h4 class="text-center py-5"><span class="text-warning">World</span> <span class="text-primary">Cloud</span></h4>
+</div>
+<script src="static/assets1/js/slim.js"></script>
+<script src="static/assets1/js/popper.js"></script>
+<script src="static/assets1/js/bootstrap.min.js"></script>
+</body>
+</html>

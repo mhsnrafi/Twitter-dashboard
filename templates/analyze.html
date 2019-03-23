@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block main %}
+<!-- Main Content -->
+    <div style='margin-left:30px'>
+        {% for tweet in tweets %}
+            {{tweet | safe}}
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

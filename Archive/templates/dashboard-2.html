@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Adminox - Responsive Web App Kit</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+      name="description"
+    />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App css -->
+    <link
+      href="{{ url_for('static',filename='assets/css/bootstrap.min.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{{ url_for('static',filename='assets/css/icons.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{{ url_for('static',filename='assets/css/style.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="{{ url_for('static',filename='assets/js/modernizr.min.js') }}"></script>
+    <link
+      href="{{ url_for('static',filename='assets/plugins/morris/morris.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Navigation Bar-->
+    <header id="topnav">
+      <div class="navbar-custom">
+        <div class="container-fluid">
+          <div id="navigation">
+            <!-- Navigation Menu-->
+            <ul class="navigation-menu">
+              <li class="has-submenu">
+                <a href="/"><i class="fi-air-play"></i>Dashboard</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="/vaccines"><i class="fi-briefcase"></i>Vaccines</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="/abortion"><i class="fi-box"></i>Abortion</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="/marijuana"><i class="fi-paper"></i>Marijuana</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="#"><i class="fi-paper-stack"></i>E-Cigs</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="/aids"><i class="fi-layers"></i>AIDS/HIV</a>
+              </li>
+
+              <li class="has-submenu">
+                <a href="/about"><i class="fi-layers"></i>About</a>
+              </li>
+            </ul>
+            <!-- End navigation menu -->
+          </div>
+          <!-- end #navigation -->
+        </div>
+        <!-- end container -->
+      </div>
+      <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
+
+    <div class="wrapper">
+      <div class="container-fluid">
+        <!-- Page-Title -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="page-title-box">
+              <h4 class="page-title">Dashboard</h4>
+            </div>
+          </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+        {% block body %} {% endblock %}
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end wrapper -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            2017 - 2018 © thetweetchecker - thetweetchecker.com
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/metisMenu.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/waves.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/jquery-toastr/jquery.toast.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/custombox/js/custombox.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/plugins/custombox/js/legacy.min.js') }}"></script>
+    <!-- App js -->
+    <script src="{{ url_for('static',filename='assets/js/jquery.core.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/js/jquery.app.js') }}"></script>
+    <script src="{{ url_for('static',filename='scripts/date.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/pages/jquery.dashboard-2.js') }}"></script>
+    <!-- jQuery  -->
+  </body>
+</html>

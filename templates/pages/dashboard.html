@@ -1,0 +1,102 @@
+{% extends "index.html" %}
+{%block title%}Dashboard{%endblock%}
+ <!-- Page Header -->
+    <header class="masthead" style="background-image: url('static/img/logo.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    {% block main %}
+<div style='margin-left:10px'>
+    <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="card-box" style='margin-left:20px'>
+                            <h4 class="header-title m-t-0 m-b-20">Topics</h4>
+
+                            <p>Select Topic</p>
+                            <p class="text-muted m-b-15 font-14">
+                                Select a topic from below
+                            </p>
+                            <form method="POST" style ='margin-left:10px'>
+                                <p>Custom Topic<br></p>
+                                <input type="text" class="form-control" style="width:200px;margin-left:0px" align='left' name="customtopic"><br>
+                                <input type="submit" name="custom" style="width:200px" value="Add Custom Topic" class='btn btn-sm btn-primary btn-rounded w-md waves-effect waves-light'>
+                            </form>
+                            {% for tweet in tweets %}
+                            {{tweet | safe}}
+                            {% endfor %}
+                            <br>
+                            <br>
+                            <br>
+                            <select form="analyze" class="submitButton" name="predefined_topic" method="POST" class="form-control select2 select2-hidden-accessible" style="margin-left:0px;width:200px" tabindex="-1" aria-hidden="true" align="left">
+                                <option value="vaccine">Vaccines</option>
+                                <option value="abortion">Abortion</option>
+                                <option value="marijuana">Marijuana</option>
+                                <option value="aids">AIDS/HIV</option>
+                                <option value="ecig">E-cigarettes</option>
+                            </select>
+                    </div>
+
+                </div>
+
+                   <div class="col-md-6">
+
+                        <div class="card-box" style='margin-left:200px'>
+                            <h4 class="header-title m-t-0 m-b-20">Analysis Type</h4>
+
+                            <p>Select Analysis Type</p>
+                            <p class="text-muted m-b-15 font-14">
+                                Select an analysis type from below
+                            </p>
+                            <select form="analyze" class="submitButton" method="POST" name="type" id="type" style="width:200px;margin-left:0px" class="form-control select2 select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
+                                <option value="latest">Latest Tweets</option>
+                                <option value="top_words">Top Words</option>
+                                <option value="top_hash">Top Hashtags</option>
+                                <option value="top_tweets">Top Tweets</option>
+                                <option value="sentiment">Sentiment</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                function submitForms(){
+                    document.forms["type"].submit();
+                    document.forms["predefined_topic"].submit();
+                }
+                $(document).ready(function() {
+            	    $("#type").change(function(){
+                        $.ajax({
+                            type: 'POST',
+                            data:  {keyname:$('#type option:selected').val()}
+                        });
+                    });
+                });
+            </script>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card-box">
+                        <div class="row justify-content-center">
+                            <form id="analyze" action="/analyze" method = "POST">
+                                <button type="submit" onclick="submitForms()" name="analyze" class='btn btn-lg btn-primary btn-rounded w-md waves-effect waves-light' style='width:200px'>Analyze</button></a>
+                                {% for tweet in tweets %}
+                                    {{tweet | safe}}
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</div>
+<br>
+<br>
+
+{% endblock %}
