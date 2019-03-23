@@ -1,24 +1,23 @@
 from flask import Flask, render_template
 from flask import request
-#from nocache import nocache
+
 import matplotlib.pyplot as plt
 
 
-import plotly.plotly as py
-import plotly.graph_objs as go
 
-import ast,requests,boto3,os,json
+
+import requests,boto3,os
 from datetime import datetime
 import plots,copy,random,string
-import numpy as np
-import io
-import base64
+
+
+
 import re
 access_key_id = 'ASIA37PBWIRNEDGEMZO2'
 secret_access_key = "oowQ5wSl6GmkVaDzuvxxydb8YoY+QT0v4mCGOxm7"
 session_token = 'FQoGZXIvYXdzEEIaDMjat7dw9kMwK4esmSKUAbvUrzkQ6jiD5GoYqUCt1rxTnLL70+dP/EIgDIcZgOUcuzlLHRY9glf+sqJexnhFY6I6s5Vjv6AtT66gUKo4t3PkdkTGtYr/SYI6CBvnEYPOtumiuqdCgHJZLUrYjZx0AsENG9BMgodHcFk8u/cSppfhzjYwWbGKzyBuNiWvpQrpNwVrpO+O+J3ORApG0/jnIv8ibN8oxqLa4QU='
 
-app = Flask(__name__,static_folder='/Users/muhammadahsan/Desktop/Freelance/mysite-3/static')
+app = Flask(__name__,static_folder='/Users/muhammadahsan/Desktop/Freelance/mysite-3/static') # change the directory
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
@@ -43,7 +42,7 @@ aws_pub = 'AKIAIFL3OJZQZDFSJOQQ'
 
 
 db = boto3.resource('dynamodb',aws_access_key_id=aws_pub,aws_secret_access_key=aws_secret, region_name=region)
-img_folder = '/Users/muhammadahsan/Desktop/Freelance/mysite-3/static/img/'
+img_folder = '/Users/muhammadahsan/Desktop/Freelance/mysite-3/static/img/' # change image folder as per your project directory
 
 
 topic_table = db.Table('topics')
@@ -177,6 +176,8 @@ def about():
   return render_template('about.html')
 
 
+
+#Twitter Dashboard Url
 @app.route('/twiiterdashboard', methods=['GET','POST'])
 def twiiterdashboard():
     table = db.Table('AllTweet')
@@ -233,6 +234,7 @@ def twiiterdashboard():
 
         }
     return render_template('pages/graph.html', d=d)
+
 
 
 
