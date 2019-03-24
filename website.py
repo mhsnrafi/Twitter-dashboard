@@ -7,7 +7,7 @@ import requests,boto3,os
 from datetime import datetime
 import plots,copy,random,string
 import numpy as np
-
+import re
 
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, 'static')
@@ -16,7 +16,7 @@ filename = os.path.join(dirname, 'static')
 
 
 
-import re
+
 access_key_id = 'ASIA37PBWIRNEDGEMZO2'
 secret_access_key = "oowQ5wSl6GmkVaDzuvxxydb8YoY+QT0v4mCGOxm7"
 session_token = 'FQoGZXIvYXdzEEIaDMjat7dw9kMwK4esmSKUAbvUrzkQ6jiD5GoYqUCt1rxTnLL70+dP/EIgDIcZgOUcuzlLHRY9glf+sqJexnhFY6I6s5Vjv6AtT66gUKo4t3PkdkTGtYr/SYI6CBvnEYPOtumiuqdCgHJZLUrYjZx0AsENG9BMgodHcFk8u/cSppfhzjYwWbGKzyBuNiWvpQrpNwVrpO+O+J3ORApG0/jnIv8ibN8oxqLa4QU='
@@ -196,18 +196,12 @@ def twiiterdashboard():
     account = []
     tweets = []
     date_time = []
-    pos_pol_count = 0
     pos_url_support_count = 0
-    neg_pol_count = 0
     neg_url_support_count = 0
-    neu_pol_count = 0
     neu_url_support_count = 0
     a = 0
     b =0
     c =0
-    d =0
-    e =0
-    f =0
 
 
     for item in response['Items']:
@@ -239,14 +233,6 @@ def twiiterdashboard():
         tweets.append(item['text'])
         date_time.append(item['created_at'])
 
-
-
-    # print(pos_url_support_count)
-    # print(neg_url_support_count)
-    # print(neu_url_support_count)
-    # print(a)
-    # print(b)
-    # print(c)
     url_array = [pos_url_support_count,neg_url_support_count, neu_url_support_count]
     non_url_array =  [a,b,c]
 
@@ -319,7 +305,9 @@ def mychart(arr1,arr2):
     autolabel(rects1, "left")
     autolabel(rects2, "right")
 
-    plt.savefig('static/img/testaaaa.png')
+    #plt.savefig('static/img/testaaaa.png')
+    plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/img/') + 'testaaaa.png')
+
     return
 
 
@@ -350,7 +338,8 @@ def polarity_chart(arr):
     # Plot
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
-    plt.savefig('static/img/new_plot.png')
+   # plt.savefig('static/img/new_plot.png')
+    plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/img/') + 'new_plot.png')
     return
 
 
@@ -379,7 +368,8 @@ def urlsupport_chart(arr1,arr2):
     # Plot
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=170)
-    plt.savefig('static/img/url_sup.png')
+    #plt.savefig('static/img/url_sup.png')
+    plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/img/') + 'url_sup.png')
     return
 
 

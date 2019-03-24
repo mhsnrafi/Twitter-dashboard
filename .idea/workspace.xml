@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="75322d6e-9a19-4ca8-b096-5a4cf1cd2d72" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/new_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/testaaaa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/url_sup.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/website.py" beforeDir="false" afterPath="$PROJECT_DIR$/website.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +19,42 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="312">
+              <caret line="252" column="36" lean-forward="true" selection-start-line="252" selection-start-column="36" selection-end-line="252" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/url_sup.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/testaaaa.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plots.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-896">
+              <caret line="46" column="30" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,6 +124,22 @@
             <path>
               <item name="mysite-3" type="b2602c69:ProjectViewProjectNode" />
               <item name="mysite-3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mysite-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mysite-3" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mysite-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mysite-3" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mysite-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mysite-3" type="462c0819:PsiDirectoryNode" />
+              <item name="Twitterdashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mysite-3" type="b2602c69:ProjectViewProjectNode" />
@@ -317,16 +368,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/dynamo_data.py" />
-    <entry file="file://$PROJECT_DIR$/plots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nocache.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -397,9 +438,6 @@
     <entry file="file://$PROJECT_DIR$/static/img/url_sup.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/img/testaaaa.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/img/ecig_PLOT_N9K6Y4MGKS_human_.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -410,14 +448,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/img/url_sup.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/img/ecig_PLOT_G2CGX811OS.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/static/assets1/img/tweet.jpg">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/weed_PLOT_5HUZG066C4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/pages/graph.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -426,13 +472,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/img/weed_PLOT_5HUZG066C4.png">
+    <entry file="file://$PROJECT_DIR$/plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-896">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/url_sup.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/testaaaa.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/website.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state relative-caret-position="312">
+          <caret line="252" column="36" lean-forward="true" selection-start-line="252" selection-start-column="36" selection-end-line="252" selection-end-column="36" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
