@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template
 from flask import request
 import matplotlib.pyplot as plt
@@ -7,6 +9,12 @@ import plots,copy,random,string
 import numpy as np
 
 
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, 'static')
+
+
+
+
 
 import re
 access_key_id = 'ASIA37PBWIRNEDGEMZO2'
@@ -14,7 +22,7 @@ secret_access_key = "oowQ5wSl6GmkVaDzuvxxydb8YoY+QT0v4mCGOxm7"
 session_token = 'FQoGZXIvYXdzEEIaDMjat7dw9kMwK4esmSKUAbvUrzkQ6jiD5GoYqUCt1rxTnLL70+dP/EIgDIcZgOUcuzlLHRY9glf+sqJexnhFY6I6s5Vjv6AtT66gUKo4t3PkdkTGtYr/SYI6CBvnEYPOtumiuqdCgHJZLUrYjZx0AsENG9BMgodHcFk8u/cSppfhzjYwWbGKzyBuNiWvpQrpNwVrpO+O+J3ORApG0/jnIv8ibN8oxqLa4QU='
 
 
-app = Flask(__name__,static_folder='/home/trevorm4/mysite/static')
+app = Flask(__name__,static_folder=filename)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
@@ -39,7 +47,9 @@ aws_pub = 'AKIAIFL3OJZQZDFSJOQQ'
 
 
 db = boto3.resource('dynamodb',aws_access_key_id=aws_pub,aws_secret_access_key=aws_secret, region_name=region)
-img_folder = '/home/trevorm4/mysite/static/img/'
+img_folder = filename +'/img/'
+
+
 
 
 topic_table = db.Table('topics')
