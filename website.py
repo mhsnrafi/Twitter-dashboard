@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import requests,boto3,os
 from datetime import datetime
 import plots,copy,random,string
+import numpy as np
 
 
 
@@ -12,7 +13,8 @@ access_key_id = 'ASIA37PBWIRNEDGEMZO2'
 secret_access_key = "oowQ5wSl6GmkVaDzuvxxydb8YoY+QT0v4mCGOxm7"
 session_token = 'FQoGZXIvYXdzEEIaDMjat7dw9kMwK4esmSKUAbvUrzkQ6jiD5GoYqUCt1rxTnLL70+dP/EIgDIcZgOUcuzlLHRY9glf+sqJexnhFY6I6s5Vjv6AtT66gUKo4t3PkdkTGtYr/SYI6CBvnEYPOtumiuqdCgHJZLUrYjZx0AsENG9BMgodHcFk8u/cSppfhzjYwWbGKzyBuNiWvpQrpNwVrpO+O+J3ORApG0/jnIv8ibN8oxqLa4QU='
 
-app = Flask(__name__,static_folder='/home/trevorm4/mysite/static') # change the directory
+
+app = Flask(__name__,static_folder='/home/trevorm4/mysite/static')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
@@ -37,7 +39,7 @@ aws_pub = 'AKIAIFL3OJZQZDFSJOQQ'
 
 
 db = boto3.resource('dynamodb',aws_access_key_id=aws_pub,aws_secret_access_key=aws_secret, region_name=region)
-img_folder = '/home/trevorm4/mysite/static/img/' # change image folder as per your project directory
+img_folder = '/home/trevorm4/mysite/static/img/'
 
 
 topic_table = db.Table('topics')
@@ -184,6 +186,18 @@ def twiiterdashboard():
     account = []
     tweets = []
     date_time = []
+    pos_pol_count = 0
+    pos_url_support_count = 0
+    neg_pol_count = 0
+    neg_url_support_count = 0
+    neu_pol_count = 0
+    neu_url_support_count = 0
+    a = 0
+    b =0
+    c =0
+    d =0
+    e =0
+    f =0
 
 
     for item in response['Items']:
@@ -194,6 +208,21 @@ def twiiterdashboard():
         else:
             human_count += 1
 
+        if re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+',item['text'])  and item['sentiment'] == 'Positive':
+            pos_url_support_count +=1
+        elif re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+',item['text'])   and item['sentiment'] == 'Negative':
+            neg_url_support_count += 1
+        elif re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+',item['text'])   and item['sentiment'] == 'Neutral':
+            neu_url_support_count += 1
+        elif item['sentiment'] == 'Positive' :
+            a +=1
+        elif item['sentiment'] == 'Negative':
+            b +=1
+        else:
+            c+=1
+
+
+
         url_sup.append(item['text'])
         account.append(item['username'])
         polarity.append(item['sentiment'])
@@ -201,15 +230,31 @@ def twiiterdashboard():
         date_time.append(item['created_at'])
 
 
+
+    # print(pos_url_support_count)
+    # print(neg_url_support_count)
+    # print(neu_url_support_count)
+    # print(a)
+    # print(b)
+    # print(c)
+    url_array = [pos_url_support_count,neg_url_support_count, neu_url_support_count]
+    non_url_array =  [a,b,c]
+
+
     urls = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', str(url_sup))
+    with open('test.csv', 'w') as  url:
+        url.write(str(urls))
+
+
     total_tweets = len(tweets)
     total_accounts = len(account)
     total_urls = len(urls)
     true_account = round((human_count / total_tweets) * 100)
     url_support = round((total_urls / total_tweets)* 100)
 
-    polarity_chart()
-
+    #polarity_chart(polarity)
+    urlsupport_chart(url_sup,total_tweets)
+    mychart(url_array,non_url_array)
 
 
     d = {
@@ -221,24 +266,66 @@ def twiiterdashboard():
         'url_support': url_support,
 
         }
+
     return render_template('pages/graph.html', d=d)
 
 
 
+def mychart(arr1,arr2):
+    url_pol_arr = arr1
+    non_url_pol_arr = arr2
+    ind = np.arange(len(url_pol_arr))  # the x locations for the groups
+    width = 0.35  # the width of the bars
 
-def polarity_chart():
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(ind - width / 2, url_pol_arr, width,
+                    color='SkyBlue', label='URL')
+    rects2 = ax.bar(ind + width / 2, non_url_pol_arr, width,
+                    color='IndianRed', label='NO URL')
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_title('Polarity and Support')
+    ax.set_xticks(ind)
+    ax.set_xticklabels(('Positive', 'Negative', 'Neutral'))
+    ax.legend()
+
+    def autolabel(rects, xpos='center'):
+        """
+        Attach a text label above each bar in *rects*, displaying its height.
+
+        *xpos* indicates which side to place the text w.r.t. the center of
+        the bar. It can be one of the following {'center', 'right', 'left'}.
+        """
+
+        xpos = xpos.lower()  # normalize the case of the parameter
+        ha = {'center': 'center', 'right': 'left', 'left': 'right'}
+        offset = {'center': 0.5, 'right': 0.57, 'left': 0.43}  # x_txt = x + w*off
+
+        for rect in rects:
+            height = rect.get_height()
+            ax.text(rect.get_x() + rect.get_width() * offset[xpos], 1.01 * height,
+                    '{}'.format(height), ha=ha[xpos], va='bottom')
+
+    autolabel(rects1, "left")
+    autolabel(rects2, "right")
+
+    plt.savefig('static/img/testaaaa.png')
+    return
+
+
+def polarity_chart(arr):
     table = db.Table('AllTweet')
     response = table.scan()
     pos = 0
     neg = 0
     neu = 0
-    polarity = []
-
-    for item in response['Items']:
-        polarity.append(item['sentiment'])
 
 
-    for item in polarity:
+    # for item in response['Items']:
+    #     polarity.append(item['sentiment'])
+
+
+    for item in arr:
         if item == "Positive":
             pos += 1
         elif item == "Negative":
@@ -253,25 +340,25 @@ def polarity_chart():
     # Plot
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
-    plt.savefig('static/assets1/img/new_plot.png')
+    plt.savefig('static/img/new_plot.png')
     return
 
 
 
 
-def urlsupport_chart():
+def urlsupport_chart(arr1,arr2):
     table = db.Table('AllTweet')
     response = table.scan()
     url_sup = []
     tweets = []
 
-    for item in response['Items']:
-        url_sup.append(item['text'])
-        tweets.append(item['TweetID'])
+    # for item in response['Items']:
+    #     url_sup.append(item['text'])
+    #     tweets.append(item['TweetID'])
 
 
-    urls = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', str(url_sup))
-    no_urls_count = len(tweets) - len(urls)
+    urls = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', str(arr1))
+    no_urls_count = arr2 - len(urls)
     url_count = len(urls)
 
     labels = 'URL', 'No URL'
@@ -282,7 +369,7 @@ def urlsupport_chart():
     # Plot
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=170)
-    plt.savefig('static/assets1/img/url_sup.png')
+    plt.savefig('static/img/url_sup.png')
     return
 
 
